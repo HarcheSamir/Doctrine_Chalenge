@@ -75,7 +75,7 @@ function App() {
      
      {/*Search and Info panel */} 
 
-      <div className="sm:w-[80%] w-[95%] mt-4 flex flex-col overflow-hidden rounded-lg shadow-md px-8 py-4 ">
+      <div className="sm:w-[80%] w-[95%] mt-8 flex flex-col overflow-hidden rounded-lg shadow-md px-8 py-4 ">
         <div className="w-full relative grid gap-4 grid-cols-1 sm:grid-cols-2">
         <div className="w-full flex items-center py-2 rounded-md border border-gray-400 ">
   <BiSearch className="mx-2 text-gray-400"/>
@@ -130,7 +130,7 @@ function App() {
 
        {/* Pagination Settings  */} 
 
-      <div className='sm:w-[80%] mt-4 w-[95%]  flex justify-end text-xs items-center select-none font-semibold text-zinc-400 px-8'>
+      <div className='sm:w-[80%] mt-2 w-[95%]  flex justify-end text-xs items-center select-none font-semibold text-zinc-400 px-8'>
    
 
            {/* select input to set the number of rows per page */}
