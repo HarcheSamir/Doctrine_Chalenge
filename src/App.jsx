@@ -14,9 +14,10 @@ function App() {
     fetch('/pokemon.json')
       .then((response) => response.json())
       .then((data) => {
+     
         setPokemonData(data);
-        setTotalPages(Math.ceil(dataWithPower.length / itemsPerPage));
-        setMaxItems(dataWithPower.length); // Set the maximum number of items
+        setTotalPages(Math.ceil(data.length / itemsPerPage));
+        setMaxItems(data.length); // Set the maximum number of items
       })
       .catch((error) => {
        console.error('Error fetching data:', error);
