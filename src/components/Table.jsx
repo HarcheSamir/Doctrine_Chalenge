@@ -22,7 +22,7 @@ export default function Table({columns, data}) {
     {data?.map((pokemon, index) => (
       <div
         key={index}
-        className={`w-full py-[10px] flex ${
+        className={`w-full py-[10px] hover:bg-[#f0f8ff] flex ${
           index !== data.length - 1 ? 'border-b-[0.5px] border-gray-100' : ''
         }`}
       >
