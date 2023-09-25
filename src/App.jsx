@@ -68,11 +68,11 @@ function App() {
 
 
   return (
-    <div className="w-screen flex flex-col  items-center ">
+    <div className="w-screen flex flex-col   items-center ">
 
 
       
-      <div className="sm:w-[80%] w-[95%] mt-10 flex flex-col overflow-hidden rounded-lg shadow-md px-8 py-4 ">
+      <div className="sm:w-[80%] w-[95%] mt-4 flex flex-col overflow-hidden rounded-lg shadow-md px-8 py-4 ">
         <div className="w-full relative grid gap-4 grid-cols-1 sm:grid-cols-2">
         <div className="w-full flex items-center py-2 rounded-md border border-gray-400 ">
   <BiSearch className="mx-2 text-gray-400"/>
@@ -99,8 +99,8 @@ function App() {
     
 
         </div>
-        <p className="mt-4 text-xs font-bold text-zinc-700">Min Power: {minPower} </p>
-        <p className="mt-2 text-xs font-bold text-zinc-700">Max Power: {maxPower} </p>
+        <p className="mt-4 text-xs font-bold text-zinc-500">Min Power: {minPower} </p>
+        <p className="mt-2 text-xs font-bold text-zinc-500">Max Power: {maxPower} </p>
 
 
 

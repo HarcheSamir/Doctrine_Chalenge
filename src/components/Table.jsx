@@ -4,7 +4,7 @@ import React from 'react'
 
 export default function Table({columns, data}) {
   return (
-    <div className='w-full shadow-md rounded-md overflow-hidden relative flex flex-col'>
+    <div className='w-full shadow-md rounded-lg overflow-hidden relative flex flex-col'>
 
     {/*Columns*/}
     <div className='w-full  relative hover:bg-[#ecf0f3] bg-[#F5F5F5] py-[10px]    flex '>
@@ -17,7 +17,7 @@ export default function Table({columns, data}) {
 
 
     {/*Data Rows*/}
-     
+     {data.length!=0 ?
      <div className='w-full flex flex-col '>
       {data?.map((pokemon,index)=>
       <div key={index} className='w-full py-[10px]  flex'>
@@ -35,6 +35,9 @@ export default function Table({columns, data}) {
       )}
 
      </div>
+    :
+    <p className='w-full h-16 flex justify-center items-center text-xs font-semibold text-zinc-500'>no data to show</p> 
+    }
       
 
     </div>
