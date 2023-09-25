@@ -24,18 +24,10 @@ function App() {
       });
   }, [itemsPerPage]);
 
-  const handlePreviousPage = () => {
-  setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
-  };
 
-  const handleNextPage = () => {
-    setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));
-  };
 
-  const handleItemsPerPageChange = (event) => {
-    const newItemsPerPage = parseInt(event.target.value, 10);
-    setItemsPerPage(newItemsPerPage);
-  };
+
+
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const paginatedData = pokemonData.slice(startIndex, endIndex).map((pokemon) => ({
@@ -62,7 +54,7 @@ function App() {
       <div className='sm:w-[80%] mt-4 w-[95%] flex justify-end text-xs items-center select-none font-semibold text-zinc-400 px-8'>
    
           Rows per page:
-          <select className='w-[37px] cursor-pointer' value={itemsPerPage} onChange={handleItemsPerPageChange}>
+          <select className='w-[37px] cursor-pointer' value={itemsPerPage} onChange={(e)=>{setItemsPerPage(parseInt(e.target.value,10))}}>
             { Array.from({ length: maxItems - 4 }, (_, index) => index + 5).map((option) => (
               <option key={option} value={option}>
                 {option}
@@ -72,8 +64,8 @@ function App() {
        
 
         <span className='ml-4'> {currentPage} of {totalPages}</span>
-        <MdOutlineNavigateBefore className={`ml-2  cursor-pointer h-[18px] w-[18px] ${currentPage != 1 && 'text-zinc-700' }`} onClick={handlePreviousPage} disabled={currentPage === 1}/>
-        <MdOutlineNavigateNext className={`ml-2  cursor-pointer h-[18px] w-[18px] ${currentPage != totalPages && 'text-zinc-700' }`} onClick={handleNextPage} disabled={currentPage === totalPages} />
+        <MdOutlineNavigateBefore className={`ml-2  cursor-pointer h-[18px] w-[18px] ${currentPage != 1 && 'text-zinc-700' }`} onClick={()=>{ setCurrentPage((prevPage) => Math.max(prevPage - 1, 1))}} disabled={currentPage === 1}/>
+        <MdOutlineNavigateNext className={`ml-2  cursor-pointer h-[18px] w-[18px] ${currentPage != totalPages && 'text-zinc-700' }`} onClick={()=>{setCurrentPage((prevPage) => Math.min(prevPage + 1, totalPages));}} disabled={currentPage === totalPages} />
       </div>
     </div>
   );
