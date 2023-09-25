@@ -16,29 +16,41 @@ export default function Table({columns, data}) {
 
 
 
-    {/*Data Rows*/}
-     {data.length!=0 ?
-     <div className='w-full flex flex-col '>
-      {data?.map((pokemon,index)=>
-      <div key={index} className='w-full py-[10px]  flex'>
-        <div className='w-[5%] px-1    text-gray-500 text-center  font-semibold  text-xs'>{pokemon.id}</div>
+ {/* Data Rows */}
+{data.length !== 0 ? (
+  <div className='w-full flex flex-col '>
+    {data?.map((pokemon, index) => (
+      <div
+        key={index}
+        className={`w-full py-[10px] flex ${
+          index !== data.length - 1 ? 'border-b-[0.5px] border-gray-100' : ''
+        }`}
+      >
+        <div className='w-[5%] px-1 text-gray-500 text-center font-semibold text-xs'>
+          {pokemon.id}
+        </div>
 
         <div className='flex w-full justify-evenly '>
-            {columns.map((column, index)=><div key={index} className=' w-full text-gray-500 truncate pr-1 text-center font-semibold text-xs'>
-                {Object.values(column)[0] === 'type'
-                  ? pokemon.type.join(', ')
-                  : pokemon[Object.values(column)[0]]}</div>)}
-         </div>
-       
-
+          {columns.map((column, index) => (
+            <div
+              key={index}
+              className='w-full text-gray-500 truncate pr-1 text-center font-semibold text-xs'
+            >
+              {Object.values(column)[0] === 'type'
+                ? pokemon.type.join(', ')
+                : pokemon[Object.values(column)[0]]}
+            </div>
+          ))}
+        </div>
       </div>
-      )}
+    ))}
+  </div>
+) : (
+  <p className='w-full h-16 flex justify-center items-center text-xs font-semibold text-zinc-500'>
+    no data to show
+  </p>
+)}
 
-     </div>
-    :
-    <p className='w-full h-16 flex justify-center items-center text-xs font-semibold text-zinc-500'>no data to show</p> 
-    }
-      
 
     </div>
   )
