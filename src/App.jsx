@@ -9,31 +9,22 @@ function App() {
   const [totalPages, setTotalPages] = useState(1);
   const [maxItems, setMaxItems] = useState(10); // Initialize with a default value
 
+
   useEffect(() => {
     fetch('/pokemon.json')
       .then((response) => response.json())
       .then((data) => {
-        const dataWithPower = data.map((pokemon) => ({
-          ...pokemon,
-          power:
-            pokemon.hp +
-            pokemon.attack +
-            pokemon.defense +
-            pokemon.special_attack +
-            pokemon.special_defense +
-            pokemon.speed,
-        }));
-        setPokemonData(dataWithPower);
+        setPokemonData(data);
         setTotalPages(Math.ceil(dataWithPower.length / itemsPerPage));
         setMaxItems(dataWithPower.length); // Set the maximum number of items
       })
       .catch((error) => {
-        console.error('Error fetching data:', error);
+       console.error('Error fetching data:', error);
       });
   }, [itemsPerPage]);
 
   const handlePreviousPage = () => {
-    setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
+  setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
   };
 
   const handleNextPage = () => {
@@ -44,13 +35,18 @@ function App() {
     const newItemsPerPage = parseInt(event.target.value, 10);
     setItemsPerPage(newItemsPerPage);
   };
-
-  // Generate an array of numbers from 5 to maxItems
-  const itemsPerPageOptions = Array.from({ length: maxItems - 4 }, (_, index) => index + 5);
-
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const paginatedData = pokemonData.slice(startIndex, endIndex);
+  const paginatedData = pokemonData.slice(startIndex, endIndex).map((pokemon) => ({
+    ...pokemon,
+    power:
+      pokemon.hp +
+      pokemon.attack +
+      pokemon.defense +
+      pokemon.special_attack +
+      pokemon.special_defense +
+      pokemon.speed,
+  }));
 
   return (
     <div className="h-screen w-screen flex flex-col items-center">
@@ -65,8 +61,8 @@ function App() {
       <div className='sm:w-[80%] mt-4 w-[95%] flex justify-end text-xs items-center select-none font-semibold text-zinc-400 px-8'>
    
           Rows per page:
-          <select className='w-[37px]' value={itemsPerPage} onChange={handleItemsPerPageChange}>
-            {itemsPerPageOptions.map((option) => (
+          <select className='w-[37px] cursor-pointer' value={itemsPerPage} onChange={handleItemsPerPageChange}>
+            { Array.from({ length: maxItems - 4 }, (_, index) => index + 5).map((option) => (
               <option key={option} value={option}>
                 {option}
               </option>
