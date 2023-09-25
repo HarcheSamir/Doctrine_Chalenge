@@ -130,7 +130,7 @@ function App() {
 
        {/* Pagination Settings  */} 
 
-      <div className='sm:w-[80%] mt-2 w-[95%]  flex justify-end text-xs items-center select-none font-semibold text-zinc-400 px-8'>
+      <div className='sm:w-[80%] mt-2 mb-8  w-[95%]  flex justify-end text-xs items-center select-none font-semibold text-zinc-400 px-8'>
    
 
            {/* select input to set the number of rows per page */}
