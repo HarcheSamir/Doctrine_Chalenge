@@ -52,6 +52,7 @@ function App() {
   }, [currentPage, itemsPerPage,  pokemonData, searchQuery,  powerThreshold]);
   
 
+  //reset page number to 1 when search conditions added
 useEffect(()=>{setCurrentPage(1)}, [searchQuery,powerThreshold])
 
 
