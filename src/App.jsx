@@ -52,6 +52,8 @@ function App() {
   }, [currentPage, itemsPerPage,  pokemonData, searchQuery,  powerThreshold]);
   
 
+useEffect(()=>{setCurrentPage(1)}, [searchQuery,powerThreshold])
+
 
 //set Min and Max of Each page
   useEffect(() => {
